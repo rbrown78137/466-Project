@@ -75,7 +75,16 @@ namespace SEWebApp.Controllers
                 }
                 userIDs.Add(userMessaged);
             }
+            
+
             var users = await _context.Users.Where(o => (userIDs.Contains(o.Id))).ToListAsync();
+
+            foreach (var user in users) 
+            {
+                IEnumerable<LastMessage> lastMessages = await GetLastMessages(user.Id);
+                user.LastMessage = lastMessages.FirstOrDefault()?.lastMessage;
+            }
+
             return users;
         }
         [HttpGet("/messageRead/{id}")]

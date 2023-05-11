@@ -1,4 +1,6 @@
-﻿namespace SEWebApp.Models
+﻿using Microsoft.AspNetCore.Authentication;
+
+namespace SEWebApp.Models
 {
     public class UserDataModel
     {
@@ -14,6 +16,7 @@
 
         public int AvatarId { get; set; }
         public int PrivacySetting { get; set; }
+        public string? LastMessage { get; set; }
 
         public DateTime LastLoginTime { get; set; }
     }
