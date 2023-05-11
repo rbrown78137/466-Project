@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SEWebApp.Models;
 
@@ -11,9 +12,10 @@ using SEWebApp.Models;
 namespace SEWebApp.Migrations
 {
     [DbContext(typeof(fundDBContext))]
-    partial class fundDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230511183641_addedKey")]
+    partial class addedKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -85,6 +85,7 @@ namespace SEWebApp.Utilities
                     SenderId = message.SenderId,
                     RecipientId = message.RecipientId,
                     Id = message.Id,
+                    Key = message.Key,
                     Read = message.Read,
                     Time = message.Time
                 });

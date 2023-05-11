@@ -48,8 +48,14 @@ namespace SEWebApp.Controllers
         [HttpGet("messagesBetween/{id1}/{recipientUsername}")]
         public async Task<ActionResult<IEnumerable<Message>>> GetAllMessagesBetween(long id1, string recipientUsername)
         {
+            int index = 1;
             var userToSendTo = await _context.Users.Where(o => (o.Username.Equals(recipientUsername))).FirstOrDefaultAsync();
             var messages = await _context.Messages.Where(a => ((a.RecipientId == id1 && a.SenderId == userToSendTo.Id) || (a.RecipientId == userToSendTo.Id && a.SenderId == id1))).ToListAsync();
+            foreach (var message in messages) 
+            {
+                message.Key = index;
+                index = index + 1;
+            }
             var returnModel = ControllerLogic.decryptMessageDataModel(messages);
             return returnModel.ToArray();
         }
